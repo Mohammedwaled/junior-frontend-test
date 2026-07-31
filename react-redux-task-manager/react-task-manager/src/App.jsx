@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -15,6 +14,10 @@ function App(){
 const dispatch = useDispatch();
 
 
+const [sidebarOpen,setSidebarOpen] = useState(false);
+
+
+
 useEffect(()=>{
 
  dispatch(fetchTasks());
@@ -25,11 +28,45 @@ useEffect(()=>{
 
 return(
 
-<div className="app">
+<div 
+className={
+sidebarOpen
+? "app sidebar-open"
+: "app"
+}
+>
 
-<Sidebar/>
+
+<Sidebar
+
+sidebarOpen={sidebarOpen}
+
+setSidebarOpen={setSidebarOpen}
+
+/>
+
+
+<button
+className={
+ sidebarOpen 
+ ? "mobile-menu open"
+ : "mobile-menu"
+}
+onClick={()=>setSidebarOpen(!sidebarOpen)}
+>
+
+{
+sidebarOpen
+? "×"
+: "☰"
+}
+
+</button>
+
+
 
 <Dashboard/>
+
 
 </div>
 

@@ -51,12 +51,18 @@ export const fetchTasks = createAsyncThunk(
 
 
 
+const savedTasks =
+JSON.parse(localStorage.getItem("tasks")) || [];
+
+
 const initialState = {
 
-  tasks: [],
+  tasks: savedTasks,
 
   filter:"all",
+
   search:"",
+
   loading:false,
 
   error:null
@@ -74,7 +80,14 @@ const tasksSlice = createSlice({
 
   reducers:{
 
+saveTasks:(state)=>{
 
+  localStorage.setItem(
+    "tasks",
+    JSON.stringify(state.tasks)
+  );
+
+},
     addTask:(state,action)=>{
 
       state.tasks.unshift(action.payload);
@@ -163,23 +176,21 @@ setSearch:(state,action)=>{
     builder
 
 
-    .addCase(fetchTasks.pending,(state)=>{
-
-      state.loading = true;
-
-      state.error = null;
-
-    })
-
-
-
     .addCase(fetchTasks.fulfilled,(state,action)=>{
 
-      state.loading = false;
+  state.loading = false;
 
-      state.tasks = action.payload;
+  if(state.tasks.length === 0){
 
-    })
+    state.tasks = action.payload;
+
+  }
+
+})
+
+
+
+  
 
 
 

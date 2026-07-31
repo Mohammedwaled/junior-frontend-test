@@ -6,8 +6,7 @@ import "./Sidebar.css";
 import sidebarData from "./sidebarData";
 
 
-function Sidebar({ sidebarOpen, setSidebarOpen }) {
-
+function Sidebar() {
 
   const dispatch = useDispatch();
 
@@ -66,34 +65,14 @@ if(label === "Completed"){
     dispatch(setFilter("completed"));
 }
 
-if(filter === "today"){
 
-    filteredTasks = tasks;
+if(label === "High"){
+
+dispatch(setFilter("high"));
+
+setSidebarOpen(false);
 
 }
-
-
-    if(label === "Important"){
-
-      dispatch(setFilter("high"));
-
-    }
-
-
-    if(label === "Completed"){
-
-      // هنضيف فلتر completed بعدين
-      dispatch(setFilter("completed"));
-
-    }
-
-
-    if(label === "Today"){
-
-      dispatch(setFilter("all"));
-
-    }
-
 
   };
 
@@ -104,24 +83,16 @@ if(filter === "today"){
     <aside className="sidebar">
 
 
-      <div className="brand-row">
+    <div className="brand-row">
+
+  <h1 className="brand">
+    Task Manager
+  </h1>
 
 
-        <h1 className="brand">
-          Task Manager
-        </h1>
+  
 
-
-
-        <button
-          className="menu-btn"
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-        >
-          ☰
-        </button>
-
-
-      </div>
+</div>
 
 
 

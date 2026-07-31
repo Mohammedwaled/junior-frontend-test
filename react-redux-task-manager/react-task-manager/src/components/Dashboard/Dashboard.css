@@ -36,3 +36,43 @@
   }
 
 }
+@media(max-width:1024px){
+
+.content{
+
+  padding:25px;
+
+}
+
+}
+
+
+
+@media(max-width:768px){
+
+.main{
+
+  width:100%;
+
+}
+
+
+.content{
+
+  padding:20px 16px;
+
+}
+
+
+}
+
+
+@media(max-width:768px){
+
+.content{
+
+padding-top:70px;
+
+}
+
+}
