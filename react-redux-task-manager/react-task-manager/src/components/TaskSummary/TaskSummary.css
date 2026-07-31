@@ -1,0 +1,29 @@
+.summary {
+
+  margin-top: 18px;
+
+  border-radius: 15px;
+
+  background: linear-gradient(
+    90deg,
+    #f6f3ff,
+    #f1eeff
+  );
+
+  border: 1px solid #e7e1ff;
+
+  padding: 16px 20px;
+
+  color: #5f6680;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  font-size: 14px;
+
+}

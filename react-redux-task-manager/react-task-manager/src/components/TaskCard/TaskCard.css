@@ -1,0 +1,301 @@
+.task-card {
+
+  background:#fff;
+
+  border:1px solid #e6e9f1;
+
+  border-radius:15px;
+
+  min-height:104px;
+
+  padding:17px 18px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:16px;
+
+  box-shadow:
+  0 8px 24px rgba(23,33,58,.06);
+
+}
+
+
+
+.checkbox {
+
+
+ width:24px;
+
+ height:24px;
+
+ border-radius:7px;
+
+ border:2px solid #c6cedd;
+
+ background:#fff;
+
+ display:grid;
+
+ place-items:center;
+
+ color:transparent;
+
+ flex-shrink:0;
+
+ cursor:pointer;
+
+}
+
+
+
+.checkbox.completed {
+
+
+ border-color:#5540f5;
+
+ background:#5540f5;
+
+ color:white;
+
+
+}
+
+
+
+.task-main {
+
+ flex:1;
+
+ min-width:0;
+
+}
+
+
+
+.task-title {
+
+
+ margin:0;
+
+ font-size:17px;
+
+ font-weight:800;
+
+ color:#17213a;
+
+ white-space:nowrap;
+
+ overflow:hidden;
+
+ text-overflow:ellipsis;
+
+}
+
+
+
+.task-card.completed .task-title {
+
+
+ color:#8e98aa;
+
+ text-decoration:line-through;
+
+
+}
+
+
+
+.meta {
+
+
+ margin-top:8px;
+
+ display:flex;
+
+ gap:9px;
+
+ align-items:center;
+
+ color:#8c97ab;
+
+ font-size:12px;
+
+
+}
+
+
+
+.dot {
+
+ opacity:.55;
+
+}
+
+
+
+
+.priority {
+
+
+ min-width:82px;
+
+ height:38px;
+
+ padding:0 12px;
+
+ border-radius:10px;
+
+ display:grid;
+
+ place-items:center;
+
+ font-size:12px;
+
+ font-weight:900;
+
+}
+
+
+
+.priority.high {
+
+
+ color:#e94d5f;
+
+ background:#fff0f2;
+
+ border:1px solid #ffd7dc;
+
+
+}
+
+
+
+.priority.medium {
+
+
+ color:#e99a28;
+
+ background:#fff7e8;
+
+ border:1px solid #fbe0b1;
+
+
+}
+
+
+
+.priority.low {
+
+
+ color:#25a77a;
+
+ background:#eafaf4;
+
+ border:1px solid #cdeee1;
+
+
+}
+
+
+
+
+
+.actions {
+
+
+ display:flex;
+
+ gap:9px;
+
+
+}
+
+
+
+.icon-btn {
+
+
+ width:42px;
+
+ height:42px;
+
+ border-radius:11px;
+
+ border:1px solid #e6e9f1;
+
+ background:white;
+
+ display:grid;
+
+ place-items:center;
+
+ font-size:17px;
+
+ cursor:pointer;
+
+
+}
+
+
+
+.icon-btn.edit {
+
+ color:#5540f5;
+
+}
+
+
+
+.icon-btn.delete {
+
+ color:#f04f5f;
+
+}
+
+
+
+.icon-btn:hover {
+
+ background:#f7f8fc;
+
+}
+
+
+
+
+
+@media(max-width:760px){
+
+
+.task-card{
+
+
+ align-items:flex-start;
+
+ flex-wrap:wrap;
+
+
+}
+
+
+
+.priority{
+
+ margin-left:40px;
+
+}
+
+
+
+.actions{
+
+ margin-left:auto;
+
+}
+
+
+
+}
