@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Task Manager",
+    "slug": "react-native-user-list",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#111a2d"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.taskmanager.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#111a2d"
+      },
+      "package": "com.taskmanager.app"
+    }
+  }
+}
