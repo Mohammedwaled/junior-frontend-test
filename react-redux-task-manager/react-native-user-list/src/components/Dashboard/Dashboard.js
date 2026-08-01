@@ -15,6 +15,7 @@ import TaskSummary from "../TaskSummary/TaskSummary";
 import TaskModal from "../Modal/TaskModal";
 import { colors, spacing } from "../../theme";
 
+
 export default function Dashboard() {
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
@@ -24,13 +25,10 @@ export default function Dashboard() {
   const isTablet = width >= 768;
   const isMobile = width < 760;
 
-  // Web spacing rules:
-  // Desktop: padding: 42px 44px
-  // Tablet: padding: 30px 24px
-  // Mobile: padding top needs to clear floating hamburger button (~60px)
+
   const paddingV = isTablet ? (width > 980 ? 42 : 30) : 30;
   const paddingH = isTablet ? (width > 980 ? 44 : 24) : 20;
-  const paddingTopMobile = isMobile ? Math.max(24, insets.top + 16) : paddingV;
+  const paddingTopMobile = isMobile ? Math.max(70, insets.top + 20) : paddingV;
 
   const handleAddClick = () => {
     setEditData(null);

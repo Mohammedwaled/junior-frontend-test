@@ -11,7 +11,8 @@ export default function TaskCard({ task, onEditPress }) {
 
   const priorityLabel = task.priority.charAt(0).toUpperCase() + task.priority.slice(1);
 
-  // Pick priority styles
+  // Pick 
+  // priority styles
   let priorityStyle = styles.priorityLow;
   let priorityTextStyle = styles.priorityLowText;
   if (task.priority === "high") {
