@@ -1,55 +1,27 @@
-import { configureStore } from "@reduxjs/toolkit";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import tasksReducer from "./tasksSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import usersReducer from './usersSlice';
 
-const STORAGE_KEY = "tasks";
-
+const STORAGE_KEY = 'users';
 
 export const store = configureStore({
   reducer: {
-    tasks: tasksReducer,
+    users: usersReducer,
   },
 });
 
-
-// يمنع الحفظ قبل تحميل البيانات القديمة
-let canSave = false;
-
-
-export const startSaving = () => {
-  canSave = true;
-};
-
+let lastUsersState = [];
 
 store.subscribe(async () => {
+  const state = store.getState();
+  const users = state.users.users;
 
-  if (!canSave) return;
-
-
-  try {
-
-    const tasks = store.getState().tasks.tasks;
-
-
-    await AsyncStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(tasks)
-    );
-
-
-    console.log(
-      "Saved:",
-      tasks.length
-    );
-
-
-  } catch (error) {
-
-    console.log(
-      "Save Error:",
-      error
-    );
-
+  if (users !== lastUsersState && users.length > 0) {
+    lastUsersState = users;
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+    } catch (error) {
+      console.error('Failed to save users to AsyncStorage:', error);
+    }
   }
-
 });

@@ -1,25 +1,24 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import { setSearch } from "../../redux/tasksSlice";
-import { colors, spacing, radius, typography, shadows } from "../../theme";
+import React, { useState } from 'react';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearch } from '../../redux/usersSlice';
+import { colors, radius } from '../../theme';
 
 export default function SearchBar() {
   const dispatch = useDispatch();
-  const searchVal = useSelector((state) => state.tasks.search);
+  const searchVal = useSelector((state) => state.users.search);
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <View style={[styles.searchWrap, shadows.card]}>
-      <Text style={styles.searchIcon}>⌕</Text>
+    <View style={[styles.searchWrap, isFocused && styles.searchWrapFocused]}>
+      <Text style={[styles.searchIcon, isFocused && styles.searchIconFocused]}>
+        ⌕
+      </Text>
       <TextInput
-        style={[
-          styles.input,
-          isFocused && styles.inputFocused,
-        ]}
+        style={styles.input}
         value={searchVal}
-        placeholder="Search tasks..."
-        placeholderTextColor={colors.subtext}
+        placeholder="Search users by name..."
+        placeholderTextColor="#a0aab8"
         onChangeText={(text) => dispatch(setSearch(text))}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
@@ -32,32 +31,40 @@ export default function SearchBar() {
 
 const styles = StyleSheet.create({
   searchWrap: {
-    position: "relative",
-    width: "100%",
-    backgroundColor: colors.white,
-    borderRadius: radius.input,
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 52,
+    borderWidth: 1.5,
+    borderColor: '#e2e8f0',
+    borderRadius: 14,
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 14,
+    shadowColor: '#111a2d',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  searchWrapFocused: {
+    borderColor: colors.primary || '#5540f5',
+    shadowColor: colors.primary || '#5540f5',
+    shadowOpacity: 0.15,
+    elevation: 5,
   },
   searchIcon: {
-    position: "absolute",
-    left: 16,
-    top: 14,
-    color: colors.searchIcon, // Web: #95a0b5
-    fontSize: typography.searchIcon, // Web: 20px
-    zIndex: 10,
+    fontSize: 20,
+    color: '#a0aab8',
+    marginRight: 10,
+    lineHeight: 24,
+  },
+  searchIconFocused: {
+    color: colors.primary || '#5540f5',
   },
   input: {
-    width: "100%",
-    height: spacing[52] || 52,
-    borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: radius.input,
-    backgroundColor: colors.white,
-    paddingLeft: 46,
-    paddingRight: 16,
-    fontSize: typography.body,
-    color: colors.heading,
-  },
-  inputFocused: {
-    borderColor: colors.focusBorder,
+    flex: 1,
+    fontSize: 15,
+    color: colors.heading || '#111a2d',
+    fontWeight: '500',
+    includeFontPadding: false,
   },
 });
